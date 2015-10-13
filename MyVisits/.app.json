@@ -46,68 +46,6 @@
     },
     {
       "type": "kendo-ui-mobile:view",
-      "name": "meeting",
-      "components": [
-        {
-          "type": "kendo-ui-mobile:form",
-          "components": [
-            {
-              "type": "kendo-ui-mobile:field",
-              "name": "date",
-              "title": "Date",
-              "inputType": "date"
-            },
-            {
-              "type": "kendo-ui-mobile:field",
-              "name": "time",
-              "title": "Time",
-              "inputType": "time"
-            },
-            {
-              "type": "kendo-ui-mobile:field",
-              "name": "time1",
-              "title": "Duration",
-              "inputType": "time"
-            },
-            {
-              "type": "kendo-ui-mobile:field",
-              "name": "customer",
-              "title": "Customer",
-              "inputType": "text",
-              "placeholder": "customer"
-            },
-            {
-              "type": "kendo-ui-mobile:field",
-              "name": "confirmed",
-              "title": "Confirmed",
-              "inputType": "checkbox"
-            },
-            {
-              "type": "kendo-ui-mobile:field",
-              "name": "location",
-              "title": "Location",
-              "inputType": "text",
-              "placeholder": "location"
-            },
-            {
-              "type": "kendo-ui-mobile:field",
-              "name": "address",
-              "title": "Address",
-              "inputType": "text",
-              "placeholder": "address"
-            }
-          ],
-          "name": "meetingModel",
-          "submitButton": "Confirm",
-          "cancelButton": "Cancel"
-        }
-      ],
-      "title": "Meeting Details",
-      "addToNavigation": true,
-      "icon": "bookmarks"
-    },
-    {
-      "type": "kendo-ui-mobile:view",
       "name": "clientDetails",
       "components": [
         {
@@ -129,6 +67,28 @@
       "title": "Client Details",
       "addToNavigation": true,
       "icon": "contacts"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "meetingView",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:list",
+          "name": "meetingViewModel",
+          "dataProvider": "defaultProvider",
+          "collection": "Meeting",
+          "iconField": false,
+          "headerField": "AltAddress",
+          "subHeaderField": "AltLocalization",
+          "masterDetails": true,
+          "detailHeaderField": "ExpectedStartTime",
+          "pullToRefresh": false,
+          "endlessScroll": false
+        }
+      ],
+      "title": "Meeting Details",
+      "addToNavigation": true,
+      "icon": "bookmarks"
     }
   ],
   "dataProviders": [
