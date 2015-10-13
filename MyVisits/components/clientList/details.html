@@ -1,0 +1,14 @@
+<div data-role="view" data-title="Details" data-model="app.clientList.clientListModel" data-bind="events: { show: detailsShow }">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+            <a data-role="backbutton" data-align="left">Back</a>
+            <span data-bind="text: currentItem.DebtorCode" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
+        </div>
+    </header>
+
+
+    <p data-bind="text: currentItem.BusinessRelation_ID"></p>
+
+    <!-- START_CUSTOM_CODE_clientListModel -->
+    <!-- END_CUSTOM_CODE_clientListModel -->
+</div>

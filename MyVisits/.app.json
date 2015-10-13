@@ -1,15 +1,149 @@
 {
   "type": "kendo-ui-mobile",
-  "isNew": true,
+  "views": [
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "homeView",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:list",
+          "name": "homeViewModel",
+          "dataProvider": "defaultProvider",
+          "collection": "Meeting",
+          "headerField": "Debtor_ID",
+          "subHeaderField": "AltAddress",
+          "masterDetails": true,
+          "detailDescriptionField": "ExpectedStartTime",
+          "pullToRefresh": true,
+          "endlessScroll": false
+        }
+      ],
+      "title": "Home",
+      "addToNavigation": true,
+      "icon": "home"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "clientList",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:list",
+          "name": "clientListModel",
+          "dataProvider": "defaultProvider",
+          "collection": "Debtor",
+          "iconField": false,
+          "headerField": "DebtorCode",
+          "filterField": "DebtorCode",
+          "masterDetails": true,
+          "detailDescriptionField": "BusinessRelation_ID",
+          "pullToRefresh": false,
+          "endlessScroll": true
+        }
+      ],
+      "title": "Client List",
+      "addToNavigation": true,
+      "icon": "contacts"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "meeting",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:form",
+          "components": [
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "date",
+              "title": "Date",
+              "inputType": "date"
+            },
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "time",
+              "title": "Time",
+              "inputType": "time"
+            },
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "time1",
+              "title": "Duration",
+              "inputType": "time"
+            },
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "customer",
+              "title": "Customer",
+              "inputType": "text",
+              "placeholder": "customer"
+            },
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "confirmed",
+              "title": "Confirmed",
+              "inputType": "checkbox"
+            },
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "location",
+              "title": "Location",
+              "inputType": "text",
+              "placeholder": "location"
+            },
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "address",
+              "title": "Address",
+              "inputType": "text",
+              "placeholder": "address"
+            }
+          ],
+          "name": "meetingModel",
+          "submitButton": "Confirm",
+          "cancelButton": "Cancel"
+        }
+      ],
+      "title": "Meeting Details",
+      "addToNavigation": true,
+      "icon": "bookmarks"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "clientDetails",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:form",
+          "components": [
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "customerName",
+              "title": "Customer",
+              "inputType": "text",
+              "placeholder": "customerName"
+            }
+          ],
+          "name": "clientDetailsModel",
+          "submitButton": "Schedule Meeting",
+          "cancelButton": "Cancel"
+        }
+      ],
+      "title": "Client Details",
+      "addToNavigation": true,
+      "icon": "contacts"
+    }
+  ],
   "dataProviders": [
     {
-      "type": "dataProvider",
-      "title": "DefaultProvider",
+      "type": "kendo-ui-mobile:dataProvider",
       "name": "defaultProvider",
+      "everliveUrl": "//platform.telerik.com/bs-api/v1/",
+      "title": "DefaultProvider",
       "source": "everlive",
-      "offlineStorage": true,
       "everliveKey": "EWgzsVbIBodAFkjb",
-      "everliveUrl": ""
+      "offlineStorage": true
     }
-  ]
+  ],
+  "name": "kendoUiMobileApp",
+  "navigation": "drawer",
+  "view": "homeView",
+  "skin": "flat"
 }
