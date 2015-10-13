@@ -1,0 +1,14 @@
+<div data-role="view" data-title="Time Line" data-layout="main" data-model="app.dataListView1" data-show="app.dataListView1.onShow" data-after-show="app.dataListView1.afterShow">
+    <!-- START_CUSTOM_CODE_dataListView1 -->
+    <!-- END_CUSTOM_CODE_dataListView1 -->
+    <ul data-role="listview" data-style="inset" data-template="dataListView1ModelTemplate" data-bind="{ source: dataListView1Model.dataSource, events: {click: dataListView1Model.itemClick}}" data-pull-to-refresh="true" data-endless-scroll="false">
+    </ul>
+    <!-- START_CUSTOM_CODE_dataListView1Model -->
+    <!-- END_CUSTOM_CODE_dataListView1Model -->
+    <script type="text/x-kendo-template" id="dataListView1ModelTemplate">
+        <div class="image-with-text">
+            <h3>#: data['Text'] #</h3>
+
+        </div>
+    </script>
+</div>
