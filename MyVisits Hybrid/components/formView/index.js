@@ -9,7 +9,11 @@ app.formView = kendo.observable({
 // END_CUSTOM_CODE_formView
 (function(parent) {
     var formViewModel = kendo.observable({
-        fields: {},
+        fields: {
+            checkbox: '',
+            username: '',
+            date: '',
+        },
         submit: function() {},
         cancel: function() {}
     });

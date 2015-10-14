@@ -35,7 +35,26 @@
       "components": [
         {
           "type": "kendo-ui-mobile:form",
-          "components": [],
+          "components": [
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "date",
+              "title": "Date",
+              "inputType": "date"
+            },
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "username",
+              "title": "Username",
+              "inputType": "text"
+            },
+            {
+              "type": "kendo-ui-mobile:field",
+              "name": "checkbox",
+              "title": "Label",
+              "inputType": "checkbox"
+            }
+          ],
           "name": "formViewModel",
           "submitButton": "Confirm",
           "cancelButton": "Cancel"

@@ -2,10 +2,10 @@
   "ProjectName": "MyVisits",
   "ProjectGuid": "75b6406b-4bde-4034-80d8-70662516b008",
   "projectVersion": 1,
-  "AppIdentifier": "com.telerik.MyVisits",
-  "DisplayName": "MyVisits",
+  "AppIdentifier": "com.telerik.MyVisits11111",
+  "DisplayName": "MyVisits111111",
   "Author": "",
-  "Description": "MyVisits",
+  "Description": "MyVisits1111",
   "BundleVersion": "1.0",
   "AndroidVersionCode": "1",
   "iOSDeviceFamily": [
