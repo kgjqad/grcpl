@@ -1,14 +1,37 @@
-<div data-role="view" data-title="Details" data-model="app.homeView.homeViewModel" data-bind="events: { show: detailsShow }">
+<div data-role="view" data-title="Meeting Details" data-model="app.homeView.homeViewModel" data-bind="events: { show: detailsShow }">
     <header data-role="header">
         <div data-role="navbar" class="header-text">
             <a data-role="backbutton" data-align="left">Back</a>
             <span data-bind="text: currentItem.Debtor_ID" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
         </div>
     </header>
-
-    <label> Meeting Date
-        <input data-bind="value: currentItem.MeetingDate" type="date">
-    </label>
+    <ul>
+        <li>
+            <label> Meeting Date
+                <input data-bind="value: currentItem.MeetingDate" type="date">
+            </label>
+        </li>
+        <li>
+            <label> Expected Start
+                <input data-bind="value: currentItem.ExpectedStartTime" type="time">
+            </label>
+        </li>
+        <li>
+            <label> Expected End
+                <input data-bind="value: currentItem.ExpectedEndTime" type="time">
+            </label>
+        </li>
+        <li>
+            <label> Address
+                <input data-bind="value: currentItem.AltAddress" type="text">
+            </label>
+        </li>
+        <li>
+            <label> Location
+                <input data-bind="value: currentItem.AltLocalization" type="text">
+            </label>
+        </li>
+    </ul>
     <!-- START_CUSTOM_CODE_homeViewModel -->
     <!-- END_CUSTOM_CODE_homeViewModel -->
 </div>

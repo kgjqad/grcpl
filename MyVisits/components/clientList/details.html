@@ -5,10 +5,29 @@
             <span data-bind="text: currentItem.DebtorCode" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
         </div>
     </header>
-
-
     <p data-bind="text: currentItem.BusinessRelation_ID"></p>
-
+    <div class="button-group">
+        <a data-role="button" data-bind="events: { click: cancel }">Cancel</a>
+        <a class="primary" data-role="button" href = "#add"> Schedule Meeting</a>
+    </div>
     <!-- START_CUSTOM_CODE_clientListModel -->
     <!-- END_CUSTOM_CODE_clientListModel -->
 </div>
+
+
+ <div data-role="view" id="add" data-model="app.clientList.clientListModel">
+        <div data-role="header">
+            <div data-role="navbar">
+               <a data-role="backbutton" data-align="left">Back</a>
+                 <span data-bind="text: currentItem.DebtorCode"></span>
+            </div>
+        </div>
+        <ul data-role="listview" >
+            <li>
+                <label> Meeting date
+                <input data-bind = "value: date" type = "date">
+                </label>
+            </li>
+        </ul>
+        <button data-bind="click: create" data-role="button">Create</button>
+    </div>
