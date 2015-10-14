@@ -77,20 +77,20 @@ app.clientList = kendo.observable({
                 app.mobileApp.navigate('#components/meetingView/view.html?uid=' + e.dataItem.uid);
             },
             create: function (e) {
-                alert( this.date);
-                       var el = new Everlive('EWgzsVbIBodAFkjb');
-       var data = el.data('Meeting');
+                alert(this.date);
+                var el = new Everlive('EWgzsVbIBodAFkjb');
+                var data = el.data('Meeting');
                 data.create({
                     'Debtor_ID': clientListModel.get('currentItem.Debtor_ID'),
-                        'MeetingDate': this.date
-                    ,
+                    'MeetingDate': this.date,
                     function (data) {
-                        alert(JSON.stringify(data));
+                        alert("Meeting created!");
                     },
                     function (error) {
                         alert(JSON.stringify(error));
                     }
                 });
+                app.mobileApp.navigate('#components/homeView/view.html');
             },
             cancel: function (e) {},
 
