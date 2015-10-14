@@ -1,0 +1,102 @@
+{
+  "type": "kendo-ui-mobile",
+  "views": [
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "homeView",
+      "components": [],
+      "title": "Home View",
+      "addToNavigation": true,
+      "icon": "home"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "dataListView",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:list",
+          "name": "dataListViewModel",
+          "dataProvider": "defaultProvider",
+          "collection": "Activities",
+          "headerField": "Text",
+          "filterField": "Text",
+          "masterDetails": false,
+          "pullToRefresh": false,
+          "endlessScroll": true
+        }
+      ],
+      "title": "Client List",
+      "addToNavigation": true,
+      "icon": "organize"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "formView",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:form",
+          "components": [],
+          "name": "formViewModel",
+          "submitButton": "Confirm",
+          "cancelButton": "Cancel"
+        }
+      ],
+      "title": "Visit Details",
+      "addToNavigation": true,
+      "icon": "bookmarks"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "dataListView1",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:list",
+          "name": "dataListView1Model",
+          "dataProvider": "defaultProvider",
+          "collection": "Activities",
+          "iconField": false,
+          "headerField": "Text",
+          "masterDetails": true,
+          "detailSubHeaderField": "Likes",
+          "pullToRefresh": true,
+          "endlessScroll": false
+        }
+      ],
+      "title": "Time Line",
+      "addToNavigation": true,
+      "icon": "organize"
+    },
+    {
+      "type": "kendo-ui-mobile:view",
+      "name": "formView1",
+      "components": [
+        {
+          "type": "kendo-ui-mobile:form",
+          "components": [],
+          "name": "formView1Model",
+          "submitButton": "Confirm",
+          "cancelButton": "Cancel"
+        }
+      ],
+      "title": "Client Details",
+      "addToNavigation": true,
+      "icon": "bookmarks"
+    }
+  ],
+  "dataProviders": [
+    {
+      "type": "kendo-ui-mobile:dataProvider",
+      "name": "defaultProvider",
+      "everliveUrl": "//platform.telerik.com/bs-api/v1/",
+      "title": "DefaultProvider",
+      "source": "everlive",
+      "everliveKey": "EWgzsVbIBodAFkjb",
+      "offlineStorage": true
+    }
+  ],
+  "name": "kendoUiMobileApp",
+  "navigation": "tabstrip",
+  "view": "homeView",
+  "transition": "slide",
+  "skin": "flat"
+}

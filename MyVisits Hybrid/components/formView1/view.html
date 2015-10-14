@@ -1,0 +1,17 @@
+<div data-role="view" data-title="Client Details" data-layout="main" data-model="app.formView1" data-show="app.formView1.onShow" data-after-show="app.formView1.afterShow">
+    <div id="formView1Model" class="form-view">
+        <form>
+            <ul class="form-content" data-role="listview" data-style="inset">
+            </ul>
+
+            <div class="button-group">
+                <a data-role="button" data-bind="events: { click: formView1Model.cancel }">Cancel</a>
+                <a class="primary" data-role="button" data-bind="events: { click: formView1Model.submit }">Confirm</a>
+            </div>
+        </form>
+        <!-- START_CUSTOM_CODE_formView1Model -->
+        <!-- END_CUSTOM_CODE_formView1Model -->
+    </div>
+    <!-- START_CUSTOM_CODE_formView1 -->
+    <!-- END_CUSTOM_CODE_formView1 -->
+</div>
