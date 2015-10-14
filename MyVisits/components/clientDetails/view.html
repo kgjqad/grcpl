@@ -1,0 +1,22 @@
+<div data-role="view" data-title="Client Details" data-layout="main" data-model="app.clientDetails" data-show="app.clientDetails.onShow" data-after-show="app.clientDetails.afterShow">
+    <div id="clientDetailsModel" class="form-view">
+        <form>
+            <ul class="form-content" data-role="listview" data-style="inset">
+                <li>
+                    <label>Customer
+                        <input data-bind="value: clientDetailsModel.fields.customerName" placeholder="customerName" type="text">
+                    </label>
+                </li>
+            </ul>
+
+            <div class="button-group">
+                <a data-role="button" data-bind="events: { click: clientDetailsModel.cancel }">Cancel</a>
+                <a class="primary" data-role="button" data-bind="events: { click: clientDetailsModel.submit }">Schedule Meeting</a>
+            </div>
+        </form>
+        <!-- START_CUSTOM_CODE_clientDetailsModel -->
+        <!-- END_CUSTOM_CODE_clientDetailsModel -->
+    </div>
+    <!-- START_CUSTOM_CODE_clientDetails -->
+    <!-- END_CUSTOM_CODE_clientDetails -->
+</div>

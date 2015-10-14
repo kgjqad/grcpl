@@ -1,0 +1,14 @@
+<div data-role="view" data-title="Meeting Details" data-layout="main" data-model="app.meetingView" data-show="app.meetingView.onShow" data-after-show="app.meetingView.afterShow">
+    <!-- START_CUSTOM_CODE_meetingView -->
+    <!-- END_CUSTOM_CODE_meetingView -->
+    <ul data-role="listview" data-style="inset" data-template="meetingViewModelTemplate" data-bind="{ source: meetingViewModel.dataSource, events: {click: meetingViewModel.itemClick}}" data-pull-to-refresh="false" data-endless-scroll="false">
+    </ul>
+    <!-- START_CUSTOM_CODE_meetingViewModel -->
+    <!-- END_CUSTOM_CODE_meetingViewModel -->
+    <script type="text/x-kendo-template" id="meetingViewModelTemplate">
+        <div class="image-with-text">
+            <h3>#: data['AltAddress'] #</h3>
+            <p>#: data['AltLocalization'] #</p>
+        </div>
+    </script>
+</div>

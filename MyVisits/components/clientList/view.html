@@ -1,0 +1,15 @@
+<div data-role="view" data-title="Client List" data-layout="main" data-model="app.clientList" data-show="app.clientList.onShow" data-after-show="app.clientList.afterShow">
+    <!-- START_CUSTOM_CODE_clientList -->
+    <!-- END_CUSTOM_CODE_clientList -->
+    <!--  Certain features like grouping and inset styling are not supported when endless scroll is enabled. -->
+    <ul data-role="listview" data-style="" data-template="clientListModelTemplate" data-bind="{ source: clientListModel.dataSource, events: {click: clientListModel.itemClick}}" data-pull-to-refresh="false" data-endless-scroll="true" data-filterable="{field: 'DebtorCode', operator: 'contains'}">
+    </ul>
+    <!-- START_CUSTOM_CODE_clientListModel -->
+    <!-- END_CUSTOM_CODE_clientListModel -->
+    <script type="text/x-kendo-template" id="clientListModelTemplate">
+        <div class="image-with-text">
+            <h3>#: data['DebtorCode'] #</h3>
+
+        </div>
+    </script>
+</div>
