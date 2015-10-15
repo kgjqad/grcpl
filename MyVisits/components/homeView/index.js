@@ -114,6 +114,8 @@ app.homeView = kendo.observable({
                     itemModel.Debtor_ID = String.fromCharCode(160);
                 }
                 homeViewModel.set('currentItem', itemModel);
+
+
             },
             close: function () {
                 $("#mdEdit").data("kendoMobileModalView").close();
@@ -121,23 +123,27 @@ app.homeView = kendo.observable({
                 app.mobileApp.navigate("#:back");
             },
             delete: function () {
-                alert("Implemented?  ble ble ble");
-                
-                var el = new Everlive('K2hhyQvKNAArrFSA');
+                var el = new Everlive('EWgzsVbIBodAFkjb');
                 var data = el.data('Meeting');
-                data.destroySingle({
-                        Id: homeViewModel.get('currentItem').UserID;
-                    },
-                    function () {
-                        alert('Item successfully deleted.');
-                    },
-                    function (error) {
-                        alert(JSON.stringify(error));
-                    });
+                if (homeViewModel.get('currentItem.Id')){
+                    data.destroySingle({
+                            Id: homeViewModel.get('currentItem.Id')
+                        },
+                        function () {
+                            alert('Item successfully deleted.');
+                        },
+                        function (error) {
+                            alert(JSON.stringify(error));
+                        });
+                }
+                else {
+                    alert("Item not found");
+                }
 
 
                 app.mobileApp.navigate('#components/homeView/view.html');
             },
+
             currentItem: null,
             currentDebtor: null
         });
