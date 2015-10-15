@@ -5,10 +5,15 @@
                 <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
                  <a data-role="button" href="#components/clientList/view.html" data-align="right" data-icon="add"></a>
             </div>
+                    <label> Filter:
+            <input id="datatest" type="date" data-bind = "value: date"></input>
+        </label>
         </header>
     <!-- START_CUSTOM_CODE_homeView -->
     <!-- END_CUSTOM_CODE_homeView -->
-    <ul data-role="listview" data-style="inset" data-template="homeViewModelTemplate" data-bind="{ source: homeViewModel.dataSource, events: {click: homeViewModel.itemClick}}" data-pull-to-refresh="true" data-endless-scroll="false">
+
+    <ul data-role="listview" data-style="inset" data-template="homeViewModelTemplate" 
+        data-bind="{ source: homeViewModel.dataSource, events: {click: homeViewModel.itemClick} }" data-pull-to-refresh="true" data-endless-scroll="false">
     </ul>
     <!-- START_CUSTOM_CODE_homeViewModel -->
     <!-- END_CUSTOM_CODE_homeViewModel -->

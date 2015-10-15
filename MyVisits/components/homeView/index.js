@@ -1,8 +1,10 @@
 'use strict';
 
 app.homeView = kendo.observable({
-    onShow: function () {},
-    afterShow: function () {}
+    onShow: function () {
+    },
+    afterShow: function () {},
+    date: null, 
 });
 
 // START_CUSTOM_CODE_homeView
@@ -44,6 +46,11 @@ app.homeView = kendo.observable({
 
                     flattenLocationProperties(dataItem);
                 }
+            },
+            filter: {
+                field: "MeetingDate",
+                operator: "eq",
+                value: app.homeView.get("date")
             },
             schema: {
                 model: {
@@ -103,10 +110,12 @@ app.homeView = kendo.observable({
         dataSource1 = new kendo.data.DataSource(dataSourceOptions1),
         homeViewModel = kendo.observable({
             dataSource: dataSource,
+
             itemClick: function (e) {
                 app.mobileApp.navigate('#components/homeView/details.html?uid=' + e.dataItem.uid);
             },
             detailsShow: function (e) {
+
                 var item = e.view.params.uid,
                     dataSource = homeViewModel.get('dataSource'),
                     itemModel = dataSource.getByUid(item);
@@ -125,7 +134,7 @@ app.homeView = kendo.observable({
             delete: function () {
                 var el = new Everlive('EWgzsVbIBodAFkjb');
                 var data = el.data('Meeting');
-                if (homeViewModel.get('currentItem.Id')){
+                if (homeViewModel.get('currentItem.Id')) {
                     data.destroySingle({
                             Id: homeViewModel.get('currentItem.Id')
                         },
@@ -135,8 +144,7 @@ app.homeView = kendo.observable({
                         function (error) {
                             alert(JSON.stringify(error));
                         });
-                }
-                else {
+                } else {
                     alert("Item not found");
                 }
 
