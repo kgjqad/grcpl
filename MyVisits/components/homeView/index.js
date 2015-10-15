@@ -121,7 +121,10 @@ app.homeView = kendo.observable({
                 app.mobileApp.navigate("#:back");
             },
             delete: function () {
-                alert("Not Implemented yet");
+                alert("Not Implemented yet ble ble ble");
+                
+                
+                
                 app.mobileApp.navigate('#components/homeView/view.html');
             },
             currentItem: null,
