@@ -1,10 +1,9 @@
 'use strict';
 
 app.homeView = kendo.observable({
-    onShow: function () {
-    },
+    onShow: function () {},
     afterShow: function () {},
-    date: null, 
+    date: new Date("2015-10-19"),
 });
 
 // START_CUSTOM_CODE_homeView

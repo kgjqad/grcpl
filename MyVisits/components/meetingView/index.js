@@ -1,17 +1,17 @@
 'use strict';
 
-app.meetingView = kendo.observable({
-    onShow: function() {},
-    afterShow: function() {}
+app.MeetingView = kendo.observable({
+    onShow: function () {},
+    afterShow: function () {},
 });
 
-// START_CUSTOM_CODE_meetingView
-// END_CUSTOM_CODE_meetingView
-(function(parent) {
+// START_CUSTOM_CODE_MeetingView
+// END_CUSTOM_CODE_MeetingView
+(function (parent) {
     var dataProvider = app.data.defaultProvider,
-        flattenLocationProperties = function(dataItem) {
+        flattenLocationProperties = function (dataItem) {
             var propName, propValue,
-                isLocation = function(value) {
+                isLocation = function (value) {
                     return propValue && typeof propValue === 'object' &&
                         propValue.longitude && propValue.latitude;
                 };
@@ -28,14 +28,52 @@ app.meetingView = kendo.observable({
                 }
             }
         },
+
         dataSourceOptions = {
             type: 'everlive',
+            autoSync: true,
             transport: {
                 typeName: 'Meeting',
                 dataProvider: dataProvider
             },
 
-            change: function(e) {
+            change: function (e) {
+                var data = this.data();
+                for (var i = 0; i < data.length; i++) {
+                    var dataItem = data[i];
+
+                    flattenLocationProperties(dataItem);
+                }
+            },
+
+            schema: {
+                model: {
+                    fields: {
+                        'Debtor_ID': {
+                            field: 'Debtor_ID',
+                            defaultValue: ''
+                        },
+                        'AltAddress': {
+                            field: 'AltAddress',
+                            defaultValue: ''
+                        },
+                        'MeetingDate': {
+                            field: 'MeetingDate',
+                            defaultValue: ''
+                        },
+                    }
+                }
+            },
+        },
+        dataSourceOptions1 = {
+            type: 'everlive',
+            autoSync: true,
+            transport: {
+                typeName: 'Debtor',
+                dataProvider: dataProvider
+            },
+
+            change: function (e) {
                 var data = this.data();
                 for (var i = 0; i < data.length; i++) {
                     var dataItem = data[i];
@@ -46,12 +84,16 @@ app.meetingView = kendo.observable({
             schema: {
                 model: {
                     fields: {
-                        'AltAddress': {
-                            field: 'AltAddress',
+                        'Debtor_ID': {
+                            field: 'Debtor_ID',
                             defaultValue: ''
                         },
-                        'AltLocalization': {
-                            field: 'AltLocalization',
+                        'DebtorCode': {
+                            field: 'DebtorCode',
+                            defaultValue: ''
+                        },
+                        'MeetingDate': {
+                            field: 'Address',
                             defaultValue: ''
                         },
                     }
@@ -59,25 +101,57 @@ app.meetingView = kendo.observable({
             },
         },
         dataSource = new kendo.data.DataSource(dataSourceOptions),
-        meetingViewModel = kendo.observable({
+        dataSource1 = new kendo.data.DataSource(dataSourceOptions1),
+        MeetingViewModel = kendo.observable({
             dataSource: dataSource,
-            itemClick: function(e) {
+
+            itemClick: function (e) {
                 app.mobileApp.navigate('#components/meetingView/details.html?uid=' + e.dataItem.uid);
             },
-            detailsShow: function(e) {
+            detailsShow: function (e) {
+
                 var item = e.view.params.uid,
-                    dataSource = meetingViewModel.get('dataSource'),
+                    dataSource = MeetingViewModel.get('dataSource'),
                     itemModel = dataSource.getByUid(item);
-                if (!itemModel.ExpectedStartTime) {
-                    itemModel.ExpectedStartTime = String.fromCharCode(160);
+                if (!itemModel.Debtor_ID) {
+                    itemModel.Debtor_ID = String.fromCharCode(160);
                 }
-                meetingViewModel.set('currentItem', itemModel);
+                MeetingViewModel.set('currentItem', itemModel);
+
+
             },
-            currentItem: null
+            close: function () {
+                $("#mdEdit").data("kendoMobileModalView").close();
+                MeetingViewModel.set('currentItem', null)
+                app.mobileApp.navigate("#:back");
+            },
+            delete: function () {
+                var el = new Everlive('EWgzsVbIBodAFkjb');
+                var data = el.data('Meeting');
+                if (MeetingViewModel.get('currentItem.Id')) {
+                    data.destroySingle({
+                            Id: MeetingViewModel.get('currentItem.Id')
+                        },
+                        function () {
+                            alert('Item successfully deleted.');
+                        },
+                        function (error) {
+                            alert(JSON.stringify(error));
+                        });
+                } else {
+                    alert("Item not found");
+                }
+
+
+                app.mobileApp.navigate('#components/meetingView/view.html');
+            },
+
+            currentItem: null,
+            currentDebtor: null
         });
 
-    parent.set('meetingViewModel', meetingViewModel);
-})(app.meetingView);
+    parent.set('MeetingViewModel', MeetingViewModel);
+})(app.MeetingView);
 
-// START_CUSTOM_CODE_meetingViewModel
-// END_CUSTOM_CODE_meetingViewModel
+// START_CUSTOM_CODE_MeetingViewModel
+// END_CUSTOM_CODE_MeetingViewModel
