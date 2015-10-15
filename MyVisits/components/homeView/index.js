@@ -121,10 +121,28 @@ app.homeView = kendo.observable({
                 app.mobileApp.navigate("#:back");
             },
             delete: function () {
-                alert("Not Implemented yet ble ble ble");
+                alert("Implemented?  ble ble ble");
+                var item = e.view.params.uid,
+                    dataSource = homeViewModel.get('dataSource'),
+                    itemModel = dataSource.getByUid(item);
+                if (!itemModel.Debtor_ID) {
+                    itemModel.Debtor_ID = String.fromCharCode(160);
+                }
+                homeViewModel.set('currentItem', itemModel);
                 
-                
-                
+                var el = new Everlive('K2hhyQvKNAArrFSA');
+                var data = el.data('Meeting');
+                data.destroySingle({
+                        Id: itemModel.UserID
+                    },
+                    function () {
+                        alert('Item successfully deleted.');
+                    },
+                    function (error) {
+                        alert(JSON.stringify(error));
+                    });
+
+
                 app.mobileApp.navigate('#components/homeView/view.html');
             },
             currentItem: null,
