@@ -1,37 +1,73 @@
-<div data-role="view" data-title="Meeting Details" data-model="app.homeView.homeViewModel" data-bind="events: { show: detailsShow }">
+<div data-role="view" data-title="Meeting Details" data-model="app.homeView.homeViewModel" data-bind="events: { show: detailsShow}">
     <header data-role="header">
         <div data-role="navbar" class="header-text">
             <a data-role="backbutton" data-align="left">Back</a>
             <span data-bind="text: currentItem.Debtor_ID" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
         </div>
     </header>
-    <ul>
-        <li>
-            <label> Meeting Date
-                <input data-bind="value: currentItem.MeetingDate" type="date">
-            </label>
-        </li>
-        <li>
-            <label> Expected Start
-                <input data-bind="value: currentItem.ExpectedStartTime" type="time">
-            </label>
-        </li>
-        <li>
-            <label> Expected End
-                <input data-bind="value: currentItem.ExpectedEndTime" type="time">
-            </label>
-        </li>
-        <li>
-            <label> Address
-                <input data-bind="value: currentItem.AltAddress" type="text">
-            </label>
-        </li>
-        <li>
-            <label> Location
-                <input data-bind="value: currentItem.AltLocalization" type="text">
-            </label>
-        </li>
-    </ul>
+    <p>
+        <label> Meeting Date:
+            <span data-bind="text: currentItem.MeetingDate" type="date"></span>
+        </label>
+    </p>
+    <p>
+        <label> Expected Start:
+            <span data-bind="text: currentItem.ExpectedStartTime" type="time"></span>
+        </label>
+    </p>
+    <p>
+        <label> Expected End:
+            <span data-bind="text: currentItem.ExpectedEndTime" type="time"></span>
+        </label>
+    </p>
+    <p>
+        <label> Address:
+            <span data-bind="text: currentItem.AltAddress" type="text"></span>
+        </label>
+    </p>
+    <p>
+        <label> Location:
+            <span data-bind="text: currentItem.AltLocation"></span>
+        </label>
+    </p>
+    <!-- START_CUSTOM_CODE_homeViewModel -->
+    <!-- END_CUSTOM_CODE_homeViewModel -->
+    <footer>
+        <a data-role="button" data-align="left" data-bind="click: delete">Delete</a>
+        <a data-role="button" data-align="rigt" data-rel="modalview" href="#mdEdit">Edit</a>
+    </footer>
+</div>
+<div data-role="modalview" id="mdEdit" style="width: 90%"  data-title="Meeting Details Edit" data-model="app.homeView.homeViewModel">
+          <header>
+             
+    <button data-bind="click: close" class="close-button" data-role="button">Close</button>
+    <span data-bind="text: currentItem.Debtor_ID" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
+   </header>
+              <p>
+        <label> Meeting Date:
+            <input data-bind="value: currentItem.MeetingDate" type="date">
+        </label>
+    </p>
+    <p>
+        <label> Expected Start:
+            <input data-bind="value: currentItem.ExpectedStartTime" type="time">
+        </label>
+    </p>
+    <p>
+        <label> Expected End:
+            <input data-bind="value: currentItem.ExpectedEndTime" type="time">
+        </label>
+    </p>
+    <p>
+        <label> Address:
+            <input data-bind="value: currentItem.AltAddress" type="text">
+        </label>
+    </p>
+    <p>
+        <label> Location:
+            <input data-bind="value: currentItem.AltLocation" type="text">
+        </label>
+    </p>
     <!-- START_CUSTOM_CODE_homeViewModel -->
     <!-- END_CUSTOM_CODE_homeViewModel -->
 </div>

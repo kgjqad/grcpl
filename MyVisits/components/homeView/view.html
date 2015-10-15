@@ -1,4 +1,11 @@
-<div data-role="view" data-title="Home" data-layout="main" data-model="app.homeView" data-show="app.homeView.onShow" data-after-show="app.homeView.afterShow">
+<div data-role="view" data-title="Home" data-model="app.homeView" data-show="app.homeView.onShow" data-after-show="app.homeView.afterShow">
+        <header data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title"></span>
+                <a data-role="button" href="#appDrawer" data-rel="drawer" data-align="left" data-icon="drawer-button"></a>
+                 <a data-role="button" href="#components/clientList/view.html" data-align="right" data-icon="add"></a>
+            </div>
+        </header>
     <!-- START_CUSTOM_CODE_homeView -->
     <!-- END_CUSTOM_CODE_homeView -->
     <ul data-role="listview" data-style="inset" data-template="homeViewModelTemplate" data-bind="{ source: homeViewModel.dataSource, events: {click: homeViewModel.itemClick}}" data-pull-to-refresh="true" data-endless-scroll="false">
@@ -7,9 +14,9 @@
     <!-- END_CUSTOM_CODE_homeViewModel -->
     <script type="text/x-kendo-template" id="homeViewModelTemplate">
         <div class="image-with-text">
-            <h3>#: data['Debtor_ID'] #</h3>
+            <h3>#: data['DebtorCode'] #</h3>
             <p>#: data['AltAddress'] #</p>
-             <p>#: data['MeetingDate'] #</p>
+            <p>#: data['MeetingDate'] #</p>
         </div>
     </script>
 </div>

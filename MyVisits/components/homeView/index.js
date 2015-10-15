@@ -28,6 +28,7 @@ app.homeView = kendo.observable({
                 }
             }
         },
+
         dataSourceOptions = {
             type: 'everlive',
             autoSync: true,
@@ -63,7 +64,43 @@ app.homeView = kendo.observable({
                 }
             },
         },
+        dataSourceOptions1 = {
+            type: 'everlive',
+            autoSync: true,
+            transport: {
+                typeName: 'Debtor',
+                dataProvider: dataProvider
+            },
+
+            change: function (e) {
+                var data = this.data();
+                for (var i = 0; i < data.length; i++) {
+                    var dataItem = data[i];
+
+                    flattenLocationProperties(dataItem);
+                }
+            },
+            schema: {
+                model: {
+                    fields: {
+                        'Debtor_ID': {
+                            field: 'Debtor_ID',
+                            defaultValue: ''
+                        },
+                        'DebtorCode': {
+                            field: 'DebtorCode',
+                            defaultValue: ''
+                        },
+                        'MeetingDate': {
+                            field: 'Address',
+                            defaultValue: ''
+                        },
+                    }
+                }
+            },
+        },
         dataSource = new kendo.data.DataSource(dataSourceOptions),
+        dataSource1 = new kendo.data.DataSource(dataSourceOptions1),
         homeViewModel = kendo.observable({
             dataSource: dataSource,
             itemClick: function (e) {
@@ -78,8 +115,17 @@ app.homeView = kendo.observable({
                 }
                 homeViewModel.set('currentItem', itemModel);
             },
-
-            currentItem: null
+            close: function () {
+                $("#mdEdit").data("kendoMobileModalView").close();
+                homeViewModel.set('currentItem', null)
+                app.mobileApp.navigate("#:back");
+            },
+            delete: function () {
+                alert("Not Implemented yet");
+                app.mobileApp.navigate('#components/homeView/view.html');
+            },
+            currentItem: null,
+            currentDebtor: null
         });
 
     parent.set('homeViewModel', homeViewModel);
