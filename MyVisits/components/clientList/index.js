@@ -86,7 +86,9 @@ app.clientList = kendo.observable({
                     'AltAddress': clientListModel.get('currentItem.Address'),
                     'AltLocation': clientListModel.get('currentItem.Location'),
                     'DebtorCode': clientListModel.get('currentItem.DebtorCode'),
-                    'DebtorCode': clientListModel.get('currentItem.DebtorCode'),
+                    'ContactPerson': clientListModel.get('currentItem.ContactPerson'),
+                    'Phone': clientListModel.get('currentItem.Phone'),
+                    'EMail': clientListModel.get('currentItem.EMail'),
                     function (data) {
                         alert("Meeting created!");
                     },

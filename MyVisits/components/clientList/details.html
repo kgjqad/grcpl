@@ -1,7 +1,7 @@
 <div data-role="view" data-title="Details" data-model="app.clientList.clientListModel" data-bind="events: { show: detailsShow }">
     <header data-role="header">
         <div data-role="navbar" class="header-text">
-            <a data-role="backbutton" data-align="left">Back</a>
+            <a data-role="backbutton" data-align="left" data-icon = "reply">Back</a>
             <span data-bind="text: currentItem.DebtorCode" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
         </div>
     </header>
@@ -13,8 +13,8 @@
     <p data-bind="text: currentItem.Email"></p>
 
     <div class="button-group">
-        <a data-role="button" data-bind="events: { click: cancel }">More</a>
-        <a class="primary" data-role="button" data-rel="modalview" href="#add"> Schedule Meeting</a>
+        <a data-role="button" data-bind="events: { click: cancel }" data-icon = "more">More</a>
+        <a class="primary" data-role="button" data-rel="modalview" href="#add" data-icon = "add"> Schedule Meeting</a>
     </div>
     <!-- START_CUSTOM_CODE_clientListModel -->
     <!-- END_CUSTOM_CODE_clientListModel -->

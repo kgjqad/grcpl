@@ -1,7 +1,7 @@
 <div data-role="view" data-title="Meeting Details" data-model="app.MeetingView.MeetingViewModel" data-bind="events: { show: detailsShow}">
     <header data-role="header">
         <div data-role="navbar" class="header-text">
-            <a data-role="backbutton" data-align="left">Back</a>
+            <a data-role="backbutton" data-align="left" data-icon = "reply">Back</a>
             <span data-bind="text: currentItem.Debtor_ID" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
         </div>
     </header>
@@ -30,11 +30,27 @@
             <span data-bind="text: currentItem.AltLocation"></span>
         </label>
     </p>
+        <p>
+        <label> Contact Person:
+            <span data-bind="text: currentItem.ContactPerson"></span>
+        </label>
+    </p>
+        <p>
+        <label> Phone:
+            <span data-bind="text: currentItem.Phone"></span>
+        </label>
+    </p>
+        <p>
+        <label> EMail:
+            <span data-bind="text: currentItem.EMail"></span>
+             <a data-role="button" data-align="left" data-bind="click: composeEmail" data-icon = "compose"> @ </a>
+        </label>
+    </p>
     <!-- START_CUSTOM_CODE_MeetingViewModel -->
     <!-- END_CUSTOM_CODE_MeetingViewModel -->
     <footer>
-        <a data-role="button" data-align="left" data-bind="click: delete">Delete</a>
-        <a data-role="button" data-align="rigt" data-rel="modalview" href="#mdEdit">Edit</a>
+        <a data-role="button" data-align="left" data-bind="click: delete" data-icon = "delete">Delete</a>
+        <a data-role="button" data-align="rigt" data-rel="modalview" href="#mdEdit" data-icon = "compose">Edit</a>
     </footer>
 </div>
 <div data-role="modalview" id="mdEdit" style="width: 90%"  data-title="Meeting Details Edit" data-model="app.MeetingView.MeetingViewModel">

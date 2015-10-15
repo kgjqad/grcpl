@@ -46,7 +46,7 @@ app.homeView = kendo.observable({
                     flattenLocationProperties(dataItem);
                 }
             },
-            filter: {
+           filter: {
                 field: "MeetingDate",
                 operator: "eq",
                 value: app.homeView.get("date")
@@ -128,7 +128,7 @@ app.homeView = kendo.observable({
             close: function () {
                 $("#mdEdit").data("kendoMobileModalView").close();
                 homeViewModel.set('currentItem', null)
-                app.mobileApp.navigate("#:back");
+              //  app.mobileApp.navigate("#:back");
             },
             delete: function () {
                 var el = new Everlive('EWgzsVbIBodAFkjb');

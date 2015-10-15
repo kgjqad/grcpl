@@ -123,7 +123,7 @@ app.MeetingView = kendo.observable({
             close: function () {
                 $("#mdEdit").data("kendoMobileModalView").close();
                 MeetingViewModel.set('currentItem', null)
-                app.mobileApp.navigate("#:back");
+           //     app.mobileApp.navigate("#:back");
             },
             delete: function () {
                 var el = new Everlive('EWgzsVbIBodAFkjb');
@@ -147,7 +147,40 @@ app.MeetingView = kendo.observable({
             },
 
             currentItem: null,
-            currentDebtor: null
+            currentDebtor: null,
+             checkAvailable: function () {
+               if (!this.checkSimulator()) {
+                   cordova.plugins.email.isAvailable(this.callback);
+               }
+           },
+
+           composeEmail: function () {
+               if (!this.checkSimulator()) {
+                   cordova.plugins.email.open({
+                       to: ['k3m@qad.com'],
+                       subject: 'Meeting today',
+                       body: 'Hi! ',
+                       isHtml: false
+                   }, this.callback)
+               }
+           },
+
+           callback: function (msg) {
+               navigator.notification.alert(JSON.stringify(msg), null, 'EmailComposer callback', 'Close');
+           },
+
+           checkSimulator: function () {
+               if (window.navigator.simulator === true) {
+                   alert('This plugin is not available in the simulator.');
+                   return true;
+               } else if (window.cordova === undefined || window.cordova.plugins === undefined) {
+                   alert('Plugin not found. Maybe you are running in AppBuilder Companion app which currently does not support this plugin.');
+                   return true;
+               } else {
+                   return false;
+               }
+           }
+            
         });
 
     parent.set('MeetingViewModel', MeetingViewModel);
