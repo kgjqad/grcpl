@@ -2,7 +2,7 @@
     <header data-role="header">
         <div data-role="navbar" class="header-text">
             <a data-role="backbutton" data-align="left" data-icon = "reply">Back</a>
-            <span data-bind="text: currentItem.Debtor_ID" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
+            <span data-bind="text: currentItem.DebtorCode" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
         </div>
     </header>
     <p>
@@ -30,6 +30,22 @@
             <span data-bind="text: currentItem.AltLocation"></span>
         </label>
     </p>
+            <p>
+        <label> Contact Person:
+            <span data-bind="text: currentItem.ContactPerson"></span>
+        </label>
+    </p>
+        <p>
+        <label> Phone:
+            <span data-bind="text: currentItem.Phone"></span>
+        </label>
+    </p>
+        <p>
+        <label> E-Mail:
+            <span data-bind="text: currentItem.EMail"></span>
+             <a data-role="button" data-align="left" data-bind="click: composeEmail" data-icon = "compose"> @ </a>
+        </label>
+    </p>
     <!-- START_CUSTOM_CODE_homeViewModel -->
     <!-- END_CUSTOM_CODE_homeViewModel -->
     <footer>
@@ -41,7 +57,7 @@
           <header>
              
     <button data-bind="click: close" class="close-button" data-role="button">Close</button>
-    <span data-bind="text: currentItem.Debtor_ID" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
+    <span data-bind="text: currentItem.DebtorCode" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
    </header>
               <p>
         <label> Meeting Date:
@@ -66,6 +82,21 @@
     <p>
         <label> Location:
             <input data-bind="value: currentItem.AltLocation" type="text">
+        </label>
+    </p>
+                <p>
+        <label> Contact Person:
+            <input data-bind="value: currentItem.ContactPerson"></span>
+        </label>
+    </p>
+        <p>
+        <label> Phone:
+            <input data-bind="value: currentItem.Phone"></span>
+        </label>
+    </p>
+        <p>
+        <label> E-Mail:
+            <input data-bind="value: currentItem.EMail"></span>
         </label>
     </p>
     <!-- START_CUSTOM_CODE_homeViewModel -->

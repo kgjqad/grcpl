@@ -3,7 +3,7 @@
 app.homeView = kendo.observable({
     onShow: function () {},
     afterShow: function () {},
-    date: new Date("2015-10-19"),
+    date: null,
 });
 
 // START_CUSTOM_CODE_homeView
@@ -127,7 +127,7 @@ app.homeView = kendo.observable({
             },
             close: function () {
                 $("#mdEdit").data("kendoMobileModalView").close();
-                homeViewModel.set('currentItem', null)
+               // homeViewModel.set('currentItem', null)
               //  app.mobileApp.navigate("#:back");
             },
             delete: function () {
@@ -152,7 +152,39 @@ app.homeView = kendo.observable({
             },
 
             currentItem: null,
-            currentDebtor: null
+            currentDebtor: null,
+             checkAvailable: function () {
+               if (!this.checkSimulator()) {
+                   cordova.plugins.email.isAvailable(this.callback);
+               }
+           },
+
+           composeEmail: function () {
+               if (!this.checkSimulator()) {
+                   cordova.plugins.email.open({
+                       to: [MeetingViewModel.get('currentItem.Id.EMail')],
+                       subject: 'Meeting today',
+                       body: 'Hi! ',
+                       isHtml: false
+                   }, this.callback)
+               }
+           },
+
+           callback: function (msg) {
+               navigator.notification.alert(JSON.stringify(msg), null, 'EmailComposer callback', 'Close');
+           },
+
+           checkSimulator: function () {
+               if (window.navigator.simulator === true) {
+                   alert('This plugin is not available in the simulator.');
+                   return true;
+               } else if (window.cordova === undefined || window.cordova.plugins === undefined) {
+                   alert('Plugin not found. Maybe you are running in AppBuilder Companion app which currently does not support this plugin.');
+                   return true;
+               } else {
+                   return false;
+               }
+           }
         });
 
     parent.set('homeViewModel', homeViewModel);

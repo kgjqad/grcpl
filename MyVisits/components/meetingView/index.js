@@ -122,7 +122,7 @@ app.MeetingView = kendo.observable({
             },
             close: function () {
                 $("#mdEdit").data("kendoMobileModalView").close();
-                MeetingViewModel.set('currentItem', null)
+            //    MeetingViewModel.set('currentItem', null)
            //     app.mobileApp.navigate("#:back");
             },
             delete: function () {
@@ -157,7 +157,7 @@ app.MeetingView = kendo.observable({
            composeEmail: function () {
                if (!this.checkSimulator()) {
                    cordova.plugins.email.open({
-                       to: ['k3m@qad.com'],
+                       to: [MeetingViewModel.get('currentItem.Id.EMail')],
                        subject: 'Meeting today',
                        body: 'Hi! ',
                        isHtml: false
