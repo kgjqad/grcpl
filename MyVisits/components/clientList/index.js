@@ -1,17 +1,17 @@
 'use strict';
 
 app.clientList = kendo.observable({
-    onShow: function() {},
-    afterShow: function() {}
+    onShow: function () {},
+    afterShow: function () {}
 });
 
 // START_CUSTOM_CODE_clientList
 // END_CUSTOM_CODE_clientList
-(function(parent) {
+(function (parent) {
     var dataProvider = app.data.defaultProvider,
-        flattenLocationProperties = function(dataItem) {
+        flattenLocationProperties = function (dataItem) {
             var propName, propValue,
-                isLocation = function(value) {
+                isLocation = function (value) {
                     return propValue && typeof propValue === 'object' &&
                         propValue.longitude && propValue.latitude;
                 };
@@ -35,7 +35,7 @@ app.clientList = kendo.observable({
                 dataProvider: dataProvider
             },
 
-            change: function(e) {
+            change: function (e) {
                 var data = this.data();
                 for (var i = 0; i < data.length; i++) {
                     var dataItem = data[i];
@@ -61,10 +61,10 @@ app.clientList = kendo.observable({
         dataSource = new kendo.data.DataSource(dataSourceOptions),
         clientListModel = kendo.observable({
             dataSource: dataSource,
-            itemClick: function(e) {
+            itemClick: function (e) {
                 app.mobileApp.navigate('#components/clientList/details.html?uid=' + e.dataItem.uid);
             },
-            detailsShow: function(e) {
+            detailsShow: function (e) {
                 var item = e.view.params.uid,
                     dataSource = clientListModel.get('dataSource'),
                     itemModel = dataSource.getByUid(item);
@@ -73,7 +73,33 @@ app.clientList = kendo.observable({
                 }
                 clientListModel.set('currentItem', itemModel);
             },
-            currentItem: null
+            schedule: function (e) {
+                app.mobileApp.navigate('#components/meetingView/view.html?uid=' + e.dataItem.uid);
+            },
+            create: function (e) {
+                var el = new Everlive('EWgzsVbIBodAFkjb');
+                var data = el.data('Meeting');
+                data.create({
+                    'Debtor_ID': clientListModel.get('currentItem.Debtor_ID'),
+                    'MeetingDate': this.date,
+                    'DebtorCode': clientListModel.get('currentItem.DebtorCode'),
+                    'AltAddress': clientListModel.get('currentItem.Address'),
+                    'AltLocation': clientListModel.get('currentItem.Location'),
+                    'DebtorCode': clientListModel.get('currentItem.DebtorCode'),
+                    'DebtorCode': clientListModel.get('currentItem.DebtorCode'),
+                    function (data) {
+                        alert("Meeting created!");
+                    },
+                    function (error) {
+                        alert("Error: " + JSON.stringify(error));
+                    }
+                });
+                app.mobileApp.navigate('#components/homeView/view.html');
+            },
+            cancel: function (e) {},
+
+            currentItem: null,
+            date: null
         });
 
     parent.set('clientListModel', clientListModel);

@@ -5,10 +5,33 @@
             <span data-bind="text: currentItem.DebtorCode" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
         </div>
     </header>
+    <p data-bind="text: currentItem.Address"></p>
+    <p data-bind="text: currentItem.Location"></p>
+    <p></p>
+    <p data-bind="text: currentItem.ContactPerson"></p>
+    <p data-bind="text: currentItem.Phone"></p>
+    <p data-bind="text: currentItem.Email"></p>
 
-
-    <p data-bind="text: currentItem.BusinessRelation_ID"></p>
-
+    <div class="button-group">
+        <a data-role="button" data-bind="events: { click: cancel }">More</a>
+        <a class="primary" data-role="button" data-rel="modalview" href="#add"> Schedule Meeting</a>
+    </div>
     <!-- START_CUSTOM_CODE_clientListModel -->
     <!-- END_CUSTOM_CODE_clientListModel -->
+</div>
+<div data-role="modalview" id="add" data-model="app.clientList.clientListModel" data-title="Schedule a new meeting" style="width: 90%">
+    <header>
+        <span data-bind="text: currentItem.DebtorCode"></span>
+    </header>
+    <ul data-role="listview">
+        <li>
+            <label> Meeting date
+                <input data-bind="value: date" type="date">
+            </label>
+        </li>
+    </ul>
+    <footer>
+        <a data-role="backbutton" data-align="left">Cancel</a>
+        <button data-bind="click: create" data-role="button">Create</button>
+    </footer>
 </div>
